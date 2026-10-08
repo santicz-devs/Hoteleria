@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración — Hotel Perico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a class="brand" href="index.html"><span class="brand-mark">P<span>.</span></span><span class="brand-name">HOTEL<br><strong>PERICO</strong></span></a>
+    <span class="admin-label">ADMINISTRACIÓN</span>
+    <a href="index.html" class="text-link">← Volver al sitio</a>
+  </header>
+  <main class="admin-main">
+    <section class="login-card" id="loginCard">
+      <p class="eyebrow">ÁREA PRIVADA</p><h1>Ingresá al panel.</h1>
+      <p>Usá el email y la contraseña del usuario administrador creado en Supabase.</p>
+      <form id="loginForm">
+        <label>Email<input id="adminEmail" type="email" autocomplete="username" required placeholder="admin@tuhotel.com"></label>
+        <label>Contraseña<input id="adminPassword" type="password" autocomplete="current-password" required></label>
+        <button class="button button-full" type="submit" id="loginBtn">Ingresar ↗</button>
+        <p id="loginError" class="form-message error" role="alert"></p>
+      </form>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="admin-title"><div><p class="eyebrow">PANEL DE CONTROL</p><h1>Reservas</h1><p>Administrá las solicitudes registradas en Supabase.</p></div><button class="button button-outline" id="logoutBtn">Cerrar sesión</button></div>
+      <p id="panelMessage" class="form-message" role="status"></p>
+      <div class="stats-grid">
+        <article class="stat-card"><span>Solicitudes totales</span><strong id="totalCount">0</strong></article>
+        <article class="stat-card"><span>Pendientes</span><strong id="pendingCount">0</strong></article>
+        <article class="stat-card"><span>Confirmadas</span><strong id="confirmedCount">0</strong></article>
+        <article class="stat-card"><span>Importe estimado confirmado</span><strong id="revenueCount">$0</strong></article>
+      </div>
+      <div class="table-toolbar"><div><h2>Listado de reservas</h2><p>Datos actualizados desde la base de datos.</p></div><div class="toolbar-actions"><button class="button button-outline" id="refreshBtn">Actualizar ↻</button><button class="button" id="exportCsv">Exportar CSV para Excel ↓</button></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Huésped</th><th>Habitación</th><th>Ingreso</th><th>Salida</th><th>Personas</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="reservationRows"></tbody></table></div>
+      <p id="emptyState" class="empty-state" hidden>Todavía no hay solicitudes registradas.</p>
+      <div class="warning-box"><strong>Información</strong><p>Las acciones se guardan en Supabase. El acceso depende de la autenticación y las políticas RLS configuradas en el proyecto.</p></div>
+    </section>
+  </main>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
